@@ -3,7 +3,7 @@ import exe
 print('\n\n\n//=====================================================//')
 print('                Welcome to BlackTopGen \n')
 print('  In this program, we will be creating two 2K19 blacktop')
-print('    teams that are evenly matched. Author: Louis Walsh')
+print('    teams that are evenly matched. Author: Louie Walsh')
 print('//=====================================================//')
 
 # SINCE THIS IS A ONE-INPUT, ONE-TIME SCRIPT, I WILL NOT BE
