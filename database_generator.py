@@ -1,4 +1,5 @@
 import sqlite3
+import excelreader as pe
 
 
 def createPlayerTable():
@@ -13,7 +14,7 @@ def createPlayerTable():
         print("Table was successfully dropped, via statement: " + dropTable)
 
     # CREATE PLAYER TABLE
-    createTable = "CREATE TABLE BLKTP_PLYRSTABLE(PLYR_NM varchar(32), OVR_RTG int)"
+    createTable = "CREATE TABLE BLKTP_PLYRSTABLE(PLYR_RKG int, PLYR_NM varchar(32), OVR_RTG int)"
     cursorObject.execute(createTable)
 
     cursorObject.execute("select * from SQLite_master where type=\"table\"")
@@ -29,11 +30,14 @@ def createPlayerTable():
         print("SQL statement: %s" % (table[4]))
         print("------------------------------------------------------\n")
 
-    # Read in values, FORCED
-    insertValues = "INSERT INTO BLKTP_PLYRSTABLE values('LeBron James', 95)"
-    cursorObject.execute(insertValues)
-    insertValues = "INSERT INTO BLKTP_PLYRSTABLE values('Kevin Love', 85)"
-    cursorObject.execute(insertValues)
+    items = pe.returnItems()
+
+    for item in items:
+        rkg = item.plr_rkg
+        nm = item.plr_name
+        rtg = item.plr_rtg
+        insertValues = "INSERT INTO BLKTP_PLYRSTABLE values('" + rkg + "', '" + item.plr_name + "', '" + rtg + "')"
+        cursorObject.execute(insertValues)
 
     # Get column names, for top heirarchy
     connectionObject.row_factory = sqlite3.Row
@@ -47,8 +51,17 @@ def createPlayerTable():
     queryTable = "SELECT * from BLKTP_PLYRSTABLE"
     queryResults = cursorObject.execute(queryTable)
 
+    playerArray = []
     # Print the records in looping format
     for result in queryResults:
         print(result)
+        playerArray.append(result)
+
 
     connectionObject.close()
+    return playerArray
+
+
+myArray = []
+myArray = createPlayerTable()
+print()
