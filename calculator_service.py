@@ -25,7 +25,7 @@ def gen_rtg_arrays():
             condition = 1
 
     teams_rtgs = [team1_rtgs, team2_rtgs]
-
+    print(teams_rtgs)
     return teams_rtgs
 
 
