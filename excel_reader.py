@@ -2,17 +2,17 @@ from xlrd import open_workbook
 
 
 class Arm(object):
-    def __init__(self, rkg, name, rtg):
-        self.plr_rkg = rkg
+    def __init__(self, id, name, rtg):
+        self.plr_id = id
         self.plr_name = name
         self.plr_rtg = rtg
 
     def __str__(self):
         return ("2K Player:\n"
-                "  RANKING = {0}\n"
+                "  id = {0}\n"
                 "  NAME = {1}\n"
                 "  RATING = {2}\n"
-                .format(self.plr_rkg, self.plr_name, self.plr_rtg))
+                .format(self.plr_id, self.plr_name, self.plr_rtg))
 
 
 wb = open_workbook('2K19_Players.xlsx')
@@ -35,6 +35,7 @@ for sheet in wb.sheets():
                 values.append(value)
         item = Arm(*values)
         items.append(item)
+
 
 def returnItems():
     return items
