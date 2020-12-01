@@ -2,8 +2,8 @@ import random
 from functools import reduce
 
 
-def gen_avg(expected_avg):
-    n = 5
+def gen_avg(expected_avg, team_size):
+    n = team_size
     a = 65
     b = 98
     while True:
@@ -14,13 +14,13 @@ def gen_avg(expected_avg):
             return lt
 
 
-def gen_rtg_arrays(expected_avg):
+def gen_rtg_arrays(expected_avg, team_size):
     team1_rtgs = []
     team2_rtgs = []
     condition = 0
     while condition == 0:
-        team1_rtgs = gen_avg(expected_avg)
-        team2_rtgs = gen_avg(expected_avg)
+        team1_rtgs = gen_avg(expected_avg, team_size)
+        team2_rtgs = gen_avg(expected_avg, team_size)
 
         dups = set(team1_rtgs) & set(team2_rtgs)
 

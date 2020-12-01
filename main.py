@@ -10,11 +10,11 @@ print('//=====================================================//')
 def user_input_rating():
     print('\n.........................................................')
     overall = int(input('        Enter your overall desired rating: '))
+    sze = int(input('        Enter number of players on each team: '))
     print('  Generating two teams with the overall rating of ' + str(overall))
     print('.........................................................\n')
 
-    return overall
-    # TODO: Special cases of max/min avg's of the top 10 and bottom 10 players
+    return overall, sze
 
 
 def team_name_input():
@@ -25,7 +25,7 @@ def team_name_input():
 
 
 # teamNameInput()
-ovr = user_input_rating()
+ovr, size = user_input_rating()
 
 print('\n.........................................................')
 print('           Creating Player Database')
@@ -36,7 +36,7 @@ print('.........................................................\n')
 
 print('\n.........................................................')
 print('      Matching Players to the following ratings')
-team_arrays = calculator_service.gen_rtg_arrays(int(ovr))
+team_arrays = calculator_service.gen_rtg_arrays(int(ovr), int(size))
 print('.........................................................\n')
 
 
