@@ -1,6 +1,7 @@
 import sqlite3
 import excel_reader as er
 import calculator_service as cs
+from random import randint
 
 
 def createPlayerTable():
@@ -12,7 +13,7 @@ def createPlayerTable():
         dropTable = "drop table BLKTP_PLYRSTABLE"
         cursorObject.execute(dropTable)
     finally:
-        print("")
+        pass
 
     # CREATE PLAYER TABLE
     createTable = "CREATE TABLE BLKTP_PLYRSTABLE(PLYR_RKG int, PLYR_NM varchar(32), OVR_RTG int)"
@@ -38,36 +39,22 @@ def selectPlayerByRtg(rtg):
 
     # Select from the players table
     queryTable = "SELECT * from BLKTP_PLYRSTABLE WHERE OVR_RTG = " + str(rtg)
-    print(queryTable)
     queryResults = cursorObject.execute(queryTable)
     # print(queryResults)
 
-    playerByRtgArray = []
+    player_by_rtg_array = []
     # Print the records in looping format
     for result in queryResults:
-        print(result)
-        playerByRtgArray.append(result)
+        # print(result)
+        player_by_rtg_array.append(result)
 
     connectionObject.close()
-    return playerByRtgArray
+    value = randint(0, len(player_by_rtg_array) - 1)
+    print("Player: ", player_by_rtg_array[value][1], " ||  Rating: ", player_by_rtg_array[value][2])
 
 
-# capture this whole thing in a while validation, maybe
-# that way i can remove the duplication in cs file, for rtgs across tms
-def matchPlayers():
-    myArray = []
-    # print(myArray)
-    # teams = cs.gen_rtg_arrays()
-    # print(teams)
-    #
-    # team1_players = []
-    # for x in teams[0]:
-    #
-    #     print(x)
-    # for z in teams[1]:
-    #     print(z)
+
+
+
 
 createPlayerTable()
-matchPlayers()
-
-selectPlayerByRtg(91)
