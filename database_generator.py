@@ -50,7 +50,8 @@ def selectPlayerByRtg(rtg):
 
     connectionObject.close()
     value = randint(0, len(player_by_rtg_array) - 1)
-    print("Player: ", player_by_rtg_array[value][1], " ||  Rating: ", player_by_rtg_array[value][2])
+    print("Player: ", player_by_rtg_array[value][1], " ||  Rating: ", player_by_rtg_array[value][2], " || ID: ",
+          player_by_rtg_array[value][0])
 
 
 
