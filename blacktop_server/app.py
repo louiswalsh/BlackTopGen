@@ -9,8 +9,8 @@ CORS(app, support_credentials=True)
 @app.route('/')
 @cross_origin(supports_credentials=True)
 def hello():
-    asd = request.json
-    print(asd)
+    players_count = request.args.get('playersCount')
+    players_rating = request.args.get('playersRating')
     return 'hi'
 #Test home page
 
