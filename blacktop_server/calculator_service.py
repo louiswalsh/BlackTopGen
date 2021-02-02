@@ -32,3 +32,4 @@ def gen_rtg_arrays(expected_avg, team_size):
     return teams_rtgs
 
 
+
